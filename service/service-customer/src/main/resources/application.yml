@@ -1,0 +1,13 @@
+# MyBatis
+mybatis:
+  # 配置mapper文件位置
+  mapper-locations: classpath:/mapper/*.xml
+  # 配置实体类包名(给实体类起别名)
+  type-aliases-package: com.lwt.daijia.model.entity
+  configuration:
+    # 开启驼峰命名自动映射
+    map-underscore-to-camel-case: true
+    # resultMap除<id>主键外，自动映射
+    auto-mapping-behavior: full
+    # 配置日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lwt.daijia.customer.mapper.CustomerInfoMapper">
+
+    <resultMap id="CustomerInfoMap" type="customerInfo">
+        <id column="id" property="id"/>
+    </resultMap>
+
+    <resultMap id="CustomerLoginVoMap" type="customerLoginVo">
+        <id column="id" property="id"/>
+    </resultMap>
+
+
+    <select id="getCustomerInfoByOpenId" resultMap="CustomerInfoMap">
+        select
+            *
+        from
+            customer_info
+        where
+            wx_open_id = #{openId}
+    </select>
+
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into customer_info
+        (
+            wx_open_id,
+            nickname,
+            gender,
+            avatar_url,
+            phone,
+            create_time
+        )
+        values
+        (
+            #{wxOpenId},
+            #{nickname},
+            #{gender},
+            #{avatarUrl},
+            #{phone},
+            #{createTime}
+        )
+    </insert>
+
+
+    <select id="getCustomerInfoById" resultMap="CustomerLoginVoMap">
+        select
+            id,
+            wx_open_id,
+            nickname,
+            gender,
+            avatar_url,
+            ifnull(phone, false) as is_bind_phone
+        from
+            customer_info
+        where
+            id = #{customerId}
+    </select>
+
+</mapper>

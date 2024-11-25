@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lwt.daijia.driver.mapper.DriverInfoMapper">
+
+    <resultMap id="DriverInfoMap" type="driverInfo">
+        <id property="id" column="id"/>
+    </resultMap>
+
+
+    <select id="getDriverInfoByOpenId" resultMap="DriverInfoMap">
+        select
+            *
+        from
+            driver_info
+        where
+            open_id = #{openId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into driver_info
+        (
+            wx_open_id,
+            nickname,
+            avatar_url
+        )
+        values
+        (
+            #{openId},
+            #{nickName},
+            #{avatarUrl}
+        )
+    </insert>
+
+
+</mapper>
