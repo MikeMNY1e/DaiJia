@@ -9,7 +9,7 @@
         <id column="id" property="id"/>
     </resultMap>
 
-    <resultMap id="CustomerLoginVoMap" type="customerLoginVo">
+    <resultMap id="CustomerLoginVoMap" type="customerLoginInfoVo">
         <id column="id" property="id"/>
     </resultMap>
 
